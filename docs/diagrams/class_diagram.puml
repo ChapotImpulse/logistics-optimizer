@@ -1,0 +1,27 @@
+@startuml
+skinparam classAttributeIconSize 0
+package core {
+  class TransportSolver {
+    +solve(costs, supply, demand)
+    -initial_plan()
+    -calculate_cost()
+  }
+  class MonteCarloSimulation {
+    +run(iterations, demand)
+  }
+}
+package io {
+  class CsvReader {
+    +read(path)
+    -split()
+  }
+}
+package cli {
+  class Main {
+    +main()
+  }
+}
+Main --> CsvReader
+Main --> TransportSolver
+Main --> MonteCarloSimulation
+@enduml
