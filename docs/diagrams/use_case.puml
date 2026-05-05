@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor "Логист" as U
+rectangle "Система оптимизации" {
+  usecase "Загрузить данные (CSV)" as UC1
+  usecase "Рассчитать оптимальный план" as UC2
+  usecase "Запустить имитацию" as UC3
+  usecase "Экспортировать отчёт" as UC4
+}
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+UC2 ..> UC3 : включает
+@enduml
