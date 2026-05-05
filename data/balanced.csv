@@ -1,0 +1,5 @@
+supply: 20 30
+demand: 15 25 10
+costs:
+4 6 8
+3 5 2
