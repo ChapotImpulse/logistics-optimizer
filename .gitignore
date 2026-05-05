@@ -1,0 +1,23 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Binaries & objects
+*.exe
+*.dll
+*.so
+*.o
+*.a
+*.dylib
+
+# Test artifacts
+coverage/
+*.gcda
+*.gcno
