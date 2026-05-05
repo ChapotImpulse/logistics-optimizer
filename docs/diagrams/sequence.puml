@@ -1,0 +1,16 @@
+@startuml
+actor User
+participant CLI
+participant CsvReader
+participant TransportSolver
+participant Simulation
+
+User -> CLI: Запуск с параметром CSV
+CLI -> CsvReader: read("data.csv")
+CsvReader --> CLI: DataInput
+CLI -> TransportSolver: solve()
+TransportSolver --> CLI: TransportResult
+CLI -> Simulation: run(10000, demand)
+Simulation --> CLI: SimResult
+CLI --> User: Вывод результатов
+@enduml
