@@ -18,5 +18,16 @@ target_include_directories(${PROJECT_NAME} PRIVATE src)
 option(BUILD_TESTS "Build Google Tests" ON)
 if(BUILD_TESTS)
     enable_testing()
+    
+    # Автоматическая загрузка Google Test
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+    )
+    # Для Windows:
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
+    
     add_subdirectory(tests)
 endif()
