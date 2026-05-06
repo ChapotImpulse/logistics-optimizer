@@ -1,8 +1,9 @@
-find_package(GTest REQUIRED)
+add_executable(tests 
+    test_transport.cpp
+    test_simulation.cpp
+)
 
-file(GLOB TEST_SRC "*.cpp")
-add_executable(test_runner ${TEST_SRC})
-target_link_libraries(test_runner GTest::GTest GTest::Main ${PROJECT_NAME})
-target_include_directories(test_runner PRIVATE ../src)
+target_include_directories(tests PRIVATE ../src)
 
-add_test(NAME LogisticsTests COMMAND test_runner)
+include(GoogleTest)
+gtest_discover_tests(tests)
