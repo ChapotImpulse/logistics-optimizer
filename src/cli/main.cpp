@@ -1,13 +1,30 @@
 #include "../core/transport_solver.h"
 #include "../core/simulation.h"
 #include "../io/csv_reader.h"
+#include <filesystem>
 #include <iostream>
 #include <iomanip>
+#include <locale>
+#include <windows.h>
 
-int main(int argc, char* argv[]) {
-    try {
-        std::string path = (argc > 1) ? argv[1] : "data/balanced.csv";
-        auto data = io::CsvReader::read(path);
+namespace fs = std::filesystem;
+
+int main(int argc, char *argv[]) {
+  SetConsoleOutputCP(1251);
+  SetConsoleCP(1251);
+  std::string path;
+
+  if (argc > 1) {
+    path = argv[1];
+  } else {
+
+    fs::path exe_path = fs::current_path();
+    path = (exe_path / "data" / "balanced.csv").string();
+  }
+
+  try {
+    std::cout << "Loading: " << path << std::endl;
+    auto data = io::CsvReader::read(path);
 
         core::TransportSolver solver;
         auto det_result = solver.solve(data.costs, data.supply, data.demand);
