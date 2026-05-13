@@ -4,14 +4,14 @@
 #include <filesystem>
 #include <iostream>
 #include <iomanip>
-#include <locale>
 #include <windows.h>
 
 namespace fs = std::filesystem;
 
 int main(int argc, char *argv[]) {
-  SetConsoleOutputCP(1251);
-  SetConsoleCP(1251);
+  SetConsoleOutputCP(65001); 
+  SetConsoleCP(65001);
+
   std::string path;
 
   if (argc > 1) {
